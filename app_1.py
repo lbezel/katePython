@@ -24,11 +24,13 @@ chaild_nomber = randint(0,3)
 def creater_new_animals(number, longevity, general_time):
     for index  in range(general_time, number, 1):
         sex = randint(0, 1)
+        #завести в переменную
         data_birth = general_time + randint(0, 25)
         data_death = data_birth + longevity
         animal = (len(General_Table), None, None, sex, data_birth, data_death)
         General_Table.append (animal)
-        if animal[3] == 0:
+
+        if sex == 0:
             Nimfa_Table_0.append(animal)
         else:
             Nimfa_Table_1.append(animal)
@@ -50,7 +52,7 @@ def cleaner(Cunner_Table, const, nomber = 5):
     for index  in range (len(Cunner_Table)):
             if Cunner_Table [index][nomber] > const:
                 Cunner_Table.pop(index)
-            index = index - 1
+            index = max(index - 1, 0)
 
 def all_clenner():
     #смерти
@@ -120,14 +122,13 @@ creater_new_animals(primary_number, longevity, general_time)
 #         index = index - 1
 
 
-# for index in range (considering_period):
-#     app_1.all_clenner()
-#     app_1.marry()
-#     app_1.bern_animal()
-#     app_1.general_time = general_time + 1
+for index in range (considering_period):
+    all_clenner()
+    marry()
+    bern_animal()
+    general_time = general_time + 1
 
 print (General_Table)
-print (len (General_Table))
 print("****************************")
 print (Nimfa_Table_0)
 print (len (Nimfa_Table_0))
